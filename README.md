@@ -168,7 +168,7 @@ Frontend will run at: `http://localhost:3000`
 
 ### Access the Application
 1. Open browser: `http://localhost:3000`
-2. You'll see the Garagego landing page
+2. You'll see the GarageGo landing page
 3. Click **"Get Started"** or **"Login"**
 
 ### User Roles
