@@ -2,41 +2,44 @@ import { Link } from 'react-router-dom'
 
 const Navbar = ({ user, onLogout }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container">
-        <Link className="navbar-brand d-flex align-items-center" to="/">
-          <span className="fs-3 me-2">🚗</span>
-          <span className="fw-bold">
-            <span className="text-white">Garage</span>
-            <span className="text-warning">go</span>
+    <nav className="navbar navbar-expand-lg navbar-dark navbar-glass sticky-top py-3">
+      <div className="container-lg">
+        <Link className="navbar-brand d-flex align-items-center gap-2" to="/">
+          <span className="brand-mark d-inline-flex align-items-center justify-content-center">
+            🚗
+          </span>
+          <span className="fw-bold brand-wordmark">
+            <span className="text-dark">Garage</span>
+            <span className="text-accent">go</span>
           </span>
         </Link>
-        
+
         <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        
+
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-2">
             {user ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/dashboard">
+                  <Link className="nav-link nav-link-modern" to="/dashboard">
                     Dashboard
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <span className="nav-link">
-                    Welcome, {user.username} ({user.role})
+                  <span className="badge bg-light-subtle text-light-emphasis rounded-pill px-3 py-2 small fw-semibold">
+                    {user.username} · {user.role}
                   </span>
                 </li>
                 <li className="nav-item">
-                  <button className="btn btn-outline-light btn-sm" onClick={onLogout}>
+                  <button className="btn btn-outline-light btn-sm rounded-pill px-3 shadow-sm" onClick={onLogout}>
                     Logout
                   </button>
                 </li>
@@ -44,18 +47,18 @@ const Navbar = ({ user, onLogout }) => {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link nav-link-modern" to="/">
                     Home
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/login">
+                  <Link className="nav-link nav-link-modern" to="/login">
                     Login
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/register">
-                    Register
+                  <Link className="btn btn-gradient btn-sm rounded-pill px-3 shadow-sm" to="/register">
+                    Get Started
                   </Link>
                 </li>
               </>
