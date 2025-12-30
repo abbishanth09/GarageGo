@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.badge {
+  font-size: 0.9em;
+}
+
+.table th {
+  background-color: #f8f9fa;
+}
+
+.btn-group-sm > .btn {
+  margin-right: 5px;
+}
