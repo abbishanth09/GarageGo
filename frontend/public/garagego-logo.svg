@@ -1,0 +1,47 @@
+<svg viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoBrandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22d3ee;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c084fc;stop-opacity:1" />
+    </linearGradient>
+    <filter id="logoShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.2" flood-color="#0f172a"/>
+    </filter>
+  </defs>
+  
+  <!-- Mark: Garage + Car -->
+  <g filter="url(#logoShadow)">
+    <!-- Garage structure -->
+    <rect x="10" y="25" width="50" height="50" fill="url(#logoBrandGradient)" rx="6" stroke="url(#logoBrandGradient)" stroke-width="2"/>
+    
+    <!-- Garage door lines -->
+    <line x1="18" y1="35" x2="50" y2="35" stroke="#f5f7fb" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+    <line x1="18" y1="47" x2="50" y2="47" stroke="#f5f7fb" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+    <line x1="18" y1="59" x2="50" y2="59" stroke="#f5f7fb" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+    
+    <!-- Garage roof -->
+    <polygon points="10,25 35,8 60,25" fill="url(#logoBrandGradient)" opacity="0.9" stroke="url(#logoBrandGradient)" stroke-width="2"/>
+  </g>
+  
+  <!-- Car inside garage -->
+  <g filter="url(#logoShadow)" opacity="0.95">
+    <!-- Car body simplified -->
+    <rect x="20" y="45" width="30" height="18" fill="#f5f7fb" rx="3"/>
+    <!-- Car roof -->
+    <polygon points="24,45 35,35 46,45" fill="#f5f7fb"/>
+    <!-- Wheels -->
+    <circle cx="24" cy="63" r="3.5" fill="#1f2937"/>
+    <circle cx="42" cy="63" r="3.5" fill="#1f2937"/>
+  </g>
+  
+  <!-- Text: GarageGo -->
+  <text x="75" y="65" font-family="'Inter', system-ui, sans-serif" font-size="48" font-weight="700" letter-spacing="-0.5px" fill="#0f172a">
+    <tspan>Garage</tspan><tspan fill="url(#logoBrandGradient)">Go</tspan>
+  </text>
+  
+  <!-- Tagline -->
+  <text x="75" y="82" font-family="'Inter', system-ui, sans-serif" font-size="11" font-weight="500" letter-spacing="0.5px" fill="#6b7280" opacity="0.7">
+    Vehicle Service Booking
+  </text>
+</svg>
