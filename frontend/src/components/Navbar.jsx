@@ -1,17 +1,16 @@
 import { Link } from 'react-router-dom'
+import logoImg from '../assets/garagego-logo.png'
 
 const Navbar = ({ user, onLogout }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark navbar-glass sticky-top py-3">
+    <nav className="navbar navbar-expand-lg navbar-dark navbar-glass sticky-top py-0">
       <div className="container-lg">
-        <Link className="navbar-brand d-flex align-items-center gap-2" to="/">
-          <span className="brand-mark d-inline-flex align-items-center justify-content-center">
-            🚗
-          </span>
-          <span className="fw-bold brand-wordmark">
-            <span className="text-dark">Garage</span>
-            <span className="text-accent">Go</span>
-          </span>
+        <Link className="navbar-brand d-flex align-items-center" to="/">
+          <img 
+            src={logoImg}
+            alt="GarageGo" 
+            style={{ height: '65px', width: 'auto' }}
+          />
         </Link>
 
         <button

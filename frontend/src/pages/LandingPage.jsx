@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import logoImg from '../assets/garagego-logo.png'
 
 const LandingPage = () => {
   return (
@@ -250,13 +251,12 @@ const LandingPage = () => {
         <div className="container">
           <div className="row g-4 align-items-start">
             <div className="col-lg-4">
-              <div className="d-flex align-items-center gap-3 mb-3">
-                <div className="brand-mark">🚗</div>
-                <div>
-                  <h5 className="mb-0 text-dark">GarageGo</h5>
-                  <small className="text-muted">Service · Scheduling · Status</small>
-                </div>
-              </div>
+              <img 
+                src={logoImg} 
+                alt="GarageGo" 
+                style={{ height: '60px', width: 'auto', marginBottom: '1.5rem' }}
+              />
+              <small className="text-muted d-block mb-3">Service · Scheduling · Status</small>
               <p className="text-muted mb-3">We keep your vehicles in motion with transparent workflows, certified mechanics, and real-time updates.</p>
               <div className="d-flex gap-3">
                 <span className="footer-chip">24/7 updates</span>
