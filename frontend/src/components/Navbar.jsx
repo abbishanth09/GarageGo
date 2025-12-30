@@ -10,7 +10,7 @@ const Navbar = ({ user, onLogout }) => {
           </span>
           <span className="fw-bold brand-wordmark">
             <span className="text-dark">Garage</span>
-            <span className="text-accent">go</span>
+            <span className="text-accent">Go</span>
           </span>
         </Link>
 

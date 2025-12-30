@@ -16,7 +16,7 @@ const LandingPage = () => {
                 Premium vehicle care that fits your schedule.
               </h1>
               <p className="hero-subtitle mb-4">
-                Garagego keeps your car in peak shape with real-time booking, certified mechanics, and updates that meet you where you are.
+                GarageGo keeps your car in peak shape with real-time booking, certified mechanics, and updates that meet you where you are.
               </p>
               <div className="d-flex flex-wrap gap-3 align-items-center">
                 <Link to="/register" className="btn btn-gradient btn-lg rounded-pill px-4 shadow-lg">
@@ -85,7 +85,7 @@ const LandingPage = () => {
                     </div>
                     <div className="col-6 d-flex align-items-center gap-2">
                       <span className="hero-icon">📍</span>
-                      <span>Garagego Downtown</span>
+                      <span>GarageGo Downtown</span>
                     </div>
                     <div className="col-6 d-flex align-items-center gap-2">
                       <span className="hero-icon">🔔</span>
@@ -253,7 +253,7 @@ const LandingPage = () => {
               <div className="d-flex align-items-center gap-3 mb-3">
                 <div className="brand-mark">🚗</div>
                 <div>
-                  <h5 className="mb-0 text-dark">Garagego</h5>
+                  <h5 className="mb-0 text-dark">GarageGo</h5>
                   <small className="text-muted">Service · Scheduling · Status</small>
                 </div>
               </div>
@@ -302,7 +302,7 @@ const LandingPage = () => {
           </div>
           <hr className="text-secondary opacity-25 my-4" />
           <div className="d-flex flex-column flex-md-row justify-content-between text-muted small">
-            <span>&copy; 2025 Garagego. All rights reserved.</span>
+            <span>&copy; 2025 GarageGo. All rights reserved.</span>
             <div className="d-flex gap-3">
               <span className="footer-text">Privacy</span>
               <span className="footer-text">Terms</span>
