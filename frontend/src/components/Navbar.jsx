@@ -5,13 +5,13 @@ const Navbar = ({ user, onLogout }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark navbar-glass sticky-top py-0">
       <div className="container-lg">
-        <Link className="navbar-brand d-flex align-items-center" to="/">
+        <a className="navbar-brand d-flex align-items-center" href="#home">
           <img 
             src={logoImg}
             alt="GarageGo" 
             style={{ height: '65px', width: 'auto' }}
           />
-        </Link>
+        </a>
 
         <button
           className="navbar-toggler"
@@ -46,9 +46,14 @@ const Navbar = ({ user, onLogout }) => {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link nav-link-modern" to="/">
+                  <a className="nav-link nav-link-modern" href="#home">
                     Home
-                  </Link>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link nav-link-modern" href="#about">
+                    About Us
+                  </a>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link nav-link-modern" to="/login">
@@ -57,7 +62,7 @@ const Navbar = ({ user, onLogout }) => {
                 </li>
                 <li className="nav-item">
                   <Link className="btn btn-gradient btn-sm rounded-pill px-3 shadow-sm" to="/register">
-                    Get Started
+                    Register
                   </Link>
                 </li>
               </>
