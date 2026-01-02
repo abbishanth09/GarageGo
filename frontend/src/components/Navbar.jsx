@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import logoImg from '../assets/garagego-logo.png'
 
-const Navbar = ({ user, onLogout }) => {
+const Navbar = ({ user, onLogout, onOpenRegisterModal, onOpenLoginModal }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark navbar-glass sticky-top py-0">
       <div className="container-lg">
@@ -56,14 +56,21 @@ const Navbar = ({ user, onLogout }) => {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link nav-link-modern" to="/login">
+                  <button 
+                    className="nav-link nav-link-modern" 
+                    onClick={onOpenLoginModal}
+                    style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                  >
                     Login
-                  </Link>
+                  </button>
                 </li>
                 <li className="nav-item">
-                  <Link className="btn btn-gradient btn-sm rounded-pill px-3 shadow-sm" to="/register">
+                  <button 
+                    className="btn btn-gradient btn-sm rounded-pill px-3 shadow-sm" 
+                    onClick={onOpenRegisterModal}
+                  >
                     Register
-                  </Link>
+                  </button>
                 </li>
               </>
             )}

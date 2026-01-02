@@ -11,6 +11,8 @@ import MechanicDashboard from './pages/MechanicDashboard'
 function App() {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
 
   useEffect(() => {
     const token = localStorage.getItem('access_token')
@@ -27,6 +29,8 @@ function App() {
     localStorage.setItem('refresh_token', tokens.refresh)
     localStorage.setItem('user', JSON.stringify(userData))
     setUser(userData)
+    setIsRegisterModalOpen(false)
+    setIsLoginModalOpen(false)
   }
 
   const handleLogout = () => {
@@ -42,9 +46,22 @@ function App() {
 
   return (
     <Router>
-      <Navbar user={user} onLogout={handleLogout} />
+      <Navbar 
+        user={user} 
+        onLogout={handleLogout} 
+        onOpenRegisterModal={() => setIsRegisterModalOpen(true)}
+        onOpenLoginModal={() => setIsLoginModalOpen(true)}
+      />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={
+          <LandingPage 
+            isRegisterModalOpen={isRegisterModalOpen} 
+            onRegisterModalChange={setIsRegisterModalOpen}
+            isLoginModalOpen={isLoginModalOpen}
+            onLoginModalChange={setIsLoginModalOpen}
+            onLogin={handleLogin} 
+          />
+        } />
         <Route path="/login" element={!user ? <Login onLogin={handleLogin} /> : <Navigate to="/dashboard" />} />
         <Route path="/register" element={!user ? <Register onLogin={handleLogin} /> : <Navigate to="/dashboard" />} />
         
