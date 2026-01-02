@@ -1,8 +1,12 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import logoImg from '../assets/garagego-logo.png'
 import carImg from '../assets/car.avif'
+import RegisterModal from '../components/RegisterModal'
+import LoginModal from '../components/LoginModal'
 
-const LandingPage = () => {
+const LandingPage = ({ isRegisterModalOpen, onRegisterModalChange, isLoginModalOpen, onLoginModalChange, onLogin }) => {
+  const navigate = useNavigate()
   return (
     <div>
       {/* Hero Section */}
@@ -21,12 +25,18 @@ const LandingPage = () => {
                 GarageGo keeps your car in peak shape with real-time booking, certified mechanics, and updates that meet you where you are.
               </p>
               <div className="d-flex flex-wrap gap-3 mb-5">
-                <Link to="/register" className="btn btn-gradient btn-lg rounded-pill px-5 py-3 shadow-lg">
+                <button 
+                  onClick={() => onRegisterModalChange(true)}
+                  className="btn btn-gradient btn-lg rounded-pill px-5 py-3 shadow-lg"
+                >
                   Book a service
-                </Link>
-                <Link to="/login" className="btn btn-outline-primary btn-lg rounded-pill px-5 py-3">
+                </button>
+                <button 
+                  onClick={() => onLoginModalChange(true)}
+                  className="btn btn-outline-primary btn-lg rounded-pill px-5 py-3"
+                >
                   Sign in
-                </Link>
+                </button>
               </div>
               <div className="d-flex flex-wrap gap-4 hero-stats">
                 <div>
@@ -243,12 +253,18 @@ const LandingPage = () => {
           <h2 className="cta-title mb-3">Ready to get started?</h2>
           <p className="cta-subtitle mb-5">Book your next service in under two minutes.</p>
           <div className="d-flex flex-wrap gap-3 justify-content-center">
-            <Link to="/register" className="btn btn-gradient btn-lg rounded-pill px-5 py-3">
+            <button 
+              onClick={() => onRegisterModalChange(true)}
+              className="btn btn-gradient btn-lg rounded-pill px-5 py-3"
+            >
               Register now
-            </Link>
-            <Link to="/login" className="btn btn-outline-primary btn-lg rounded-pill px-5 py-3">
+            </button>
+            <button 
+              onClick={() => onLoginModalChange(true)}
+              className="btn btn-outline-primary btn-lg rounded-pill px-5 py-3"
+            >
               Log in
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -275,11 +291,11 @@ const LandingPage = () => {
             <div className="col-lg-5">
               <div className="row g-3">
                 <div className="col-6 col-md-4">
-                  <h6 className="text-dark mb-3">Product</h6>
+                  <h6 className="text-dark mb-3">Menu</h6>
                   <ul className="list-unstyled small text-muted mb-0">
-                    <li><Link className="footer-link" to="/login">Dashboard</Link></li>
-                    <li><Link className="footer-link" to="/register">Sign up</Link></li>
-                    <li><Link className="footer-link" to="/">Status</Link></li>
+                    <li><a className="footer-link" href="#home">Home</a></li>
+                    <li><a className="footer-link" href="#about">About Us</a></li>
+                    <li><button className="footer-link" onClick={() => onLoginModalChange(true)} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>Login</button></li>
                   </ul>
                 </div>
                 <div className="col-6 col-md-4">
@@ -320,6 +336,28 @@ const LandingPage = () => {
           </div>
         </div>
       </footer>
+
+      {/* Register Modal */}
+      <RegisterModal 
+        isOpen={isRegisterModalOpen} 
+        onClose={() => onRegisterModalChange(false)} 
+        onLogin={onLogin}
+        onSwitchToLogin={() => {
+          onRegisterModalChange(false)
+          onLoginModalChange(true)
+        }}
+      />
+
+      {/* Login Modal */}
+      <LoginModal 
+        isOpen={isLoginModalOpen} 
+        onClose={() => onLoginModalChange(false)} 
+        onLogin={onLogin}
+        onSwitchToRegister={() => {
+          onLoginModalChange(false)
+          onRegisterModalChange(true)
+        }}
+      />
     </div>
   )
 }
