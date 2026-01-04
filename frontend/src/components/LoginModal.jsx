@@ -44,12 +44,12 @@ const LoginModal = ({ isOpen, onClose, onLogin, onSwitchToRegister }) => {
 
   return (
     <>
-      <div className="modal-backdrop-blur"></div>
+      <div className="modal-backdrop-blur" onClick={onClose}></div>
       <div className="register-modal">
-        <div className="register-modal-content">
-          <div className="register-modal-header">
-            <h2 className="register-modal-title">Welcome Back</h2>
-            <button className="register-modal-close" onClick={onClose}>×</button>
+        <div className="login-modal-glass" onClick={(e) => e.stopPropagation()}>
+          <button className="modal-close-glass" onClick={onClose}>×</button>
+          <div className="modal-header-glass">
+            <h2 className="modal-title-glass">Welcome Back</h2>
           </div>
 
           {error && (
@@ -59,11 +59,11 @@ const LoginModal = ({ isOpen, onClose, onLogin, onSwitchToRegister }) => {
           )}
 
           <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label className="form-label">Username</label>
+            <div className="mb-4">
+              <label className="form-label fw-medium mb-2">Username</label>
               <input
                 type="text"
-                className="form-control register-form-input"
+                className="form-control form-control-glass"
                 name="username"
                 value={formData.username}
                 onChange={handleChange}
@@ -73,10 +73,10 @@ const LoginModal = ({ isOpen, onClose, onLogin, onSwitchToRegister }) => {
             </div>
 
             <div className="mb-4">
-              <label className="form-label">Password</label>
+              <label className="form-label fw-medium mb-2">Password</label>
               <input
                 type="password"
-                className="form-control register-form-input"
+                className="form-control form-control-glass"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
@@ -87,16 +87,16 @@ const LoginModal = ({ isOpen, onClose, onLogin, onSwitchToRegister }) => {
 
             <button
               type="submit"
-              className="btn btn-gradient w-100 rounded-pill py-3"
+              className="btn btn-gradient w-100 rounded-pill py-3 mt-2"
               disabled={loading}
             >
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
 
-          <div className="text-center mt-3">
-            <p className="text-muted small">
-              Don't have an account? <span className="text-gradient-link" style={{ cursor: 'pointer' }} onClick={onSwitchToRegister}>Register</span>
+          <div className="text-center mt-4">
+            <p className="text-muted small mb-0">
+              Don't have an account? <span className="text-gradient fw-semibold" style={{ cursor: 'pointer', textDecoration: 'none' }} onClick={onSwitchToRegister}>Register</span>
             </p>
           </div>
         </div>
