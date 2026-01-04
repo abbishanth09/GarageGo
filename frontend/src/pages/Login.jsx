@@ -34,13 +34,26 @@ const Login = ({ onLogin }) => {
     }
   }
 
+  const handleClose = () => {
+    navigate('/')
+  }
+
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card">
-            <div className="card-body">
-              <h3 className="card-title text-center mb-4">Login</h3>
+    <div className="login-container">
+      <div className="container mt-5">
+        <div className="row justify-content-center">
+          <div className="col-md-6 col-lg-5">
+            <div className="card card-glass position-relative">
+              <button 
+                type="button" 
+                className="btn-close-glass" 
+                onClick={handleClose}
+                aria-label="Close"
+              >
+                ×
+              </button>
+              <div className="card-body p-4 p-md-5">
+                <h3 className="card-title text-center mb-4 fw-bold">Welcome Back</h3>
               
               {error && (
                 <div className="alert alert-danger" role="alert">
@@ -49,11 +62,11 @@ const Login = ({ onLogin }) => {
               )}
 
               <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label className="form-label">Email</label>
+                <div className="mb-4">
+                  <label className="form-label fw-medium">Username</label>
                   <input
                     type="email"
-                    className="form-control"
+                    className="form-control form-control-glass"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
@@ -61,11 +74,11 @@ const Login = ({ onLogin }) => {
                   />
                 </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Password</label>
+                <div className="mb-4">
+                  <label className="form-label fw-medium">Password</label>
                   <input
                     type="password"
-                    className="form-control"
+                    className="form-control form-control-glass"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
@@ -75,15 +88,17 @@ const Login = ({ onLogin }) => {
 
                 <button
                   type="submit"
-                  className="btn btn-primary w-100"
+                  className="btn btn-gradient w-100 py-3"
                   disabled={loading}
                 >
-                  {loading ? 'Logging in...' : 'Login'}
+                  {loading ? 'Signing in...' : 'Sign In'}
                 </button>
               </form>
 
-              <div className="text-center mt-3">
-                <Link to="/register">Don't have an account? Register</Link>
+              <div className="text-center mt-4">
+                <span className="text-muted">Don't have an account? </span>
+                <Link to="/register" className="text-gradient fw-semibold text-decoration-none">Register</Link>
+              </div>
               </div>
             </div>
           </div>
