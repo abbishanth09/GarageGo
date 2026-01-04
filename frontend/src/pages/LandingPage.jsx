@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import logoImg from '../assets/garagego-logo.png'
 import carImg from '../assets/car.avif'
+import garageImg from '../assets/Garage.webp'
 import RegisterModal from '../components/RegisterModal'
 import LoginModal from '../components/LoginModal'
 
@@ -10,61 +11,79 @@ const LandingPage = ({ isRegisterModalOpen, onRegisterModalChange, isLoginModalO
   return (
     <div>
       {/* Hero Section */}
-      <section id="home" className="hero-section">
+      <section id="home" className="hero-section-modern">
+        <div className="hero-bg-overlay"></div>
+        <div className="hero-grid-lines"></div>
         <div className="container-lg">
           <div className="row g-5 align-items-center">
             <div className="col-lg-6">
-              <div className="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill hero-chip mb-4">
-                <span className="hero-dot"></span>
-                <small className="fw-semibold text-uppercase ls-wider">Book · Track · Drive</small>
-              </div>
-              <h1 className="hero-title mb-4">
-                Premium <span className="text-gradient">vehicle care</span> that fits your schedule
-              </h1>
-              <p className="hero-subtitle mb-5">
-                GarageGo keeps your car in peak shape with real-time booking, certified mechanics, and updates that meet you where you are.
-              </p>
-              <div className="d-flex flex-wrap gap-3 mb-5">
-                <button 
-                  onClick={() => onRegisterModalChange(true)}
-                  className="btn btn-gradient btn-lg rounded-pill px-5 py-3 shadow-lg"
-                >
-                  Book a service
-                </button>
-                <button 
-                  onClick={() => onLoginModalChange(true)}
-                  className="btn btn-outline-primary btn-lg rounded-pill px-5 py-3"
-                >
-                  Sign in
-                </button>
-              </div>
-              <div className="d-flex flex-wrap gap-4 hero-stats">
-                <div>
-                  <div className="stat-number">+240</div>
-                  <div className="stat-label">Monthly bookings</div>
+              <div className="hero-content-modern">
+                <div className="badge-modern mb-4">
+                  <span className="badge-dot"></span>
+                  <span className="badge-text">TRUSTED BY 10K+ DRIVERS</span>
                 </div>
-                <div>
-                  <div className="stat-number">4.9★</div>
-                  <div className="stat-label">Customer rating</div>
+                <h1 className="hero-title-modern mb-4">
+                  Smart Vehicle Care,
+                  <span className="text-gradient-modern d-block">Delivered Seamlessly</span>
+                </h1>
+                <p className="hero-subtitle-modern mb-5">
+                  Experience next-generation vehicle maintenance with AI-powered diagnostics, instant booking, and real-time tracking. Your car deserves the best.
+                </p>
+                <div className="d-flex flex-wrap gap-3 mb-5">
+                  <button 
+                    onClick={() => onRegisterModalChange(true)}
+                    className="btn-modern btn-modern-primary"
+                  >
+                    <span>Register</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
                 </div>
-                <div>
-                  <div className="stat-number">24/7</div>
-                  <div className="stat-label">Status updates</div>
+                <div className="hero-stats-modern">
+                  <div className="stat-item-modern">
+                    <div className="stat-number-modern">240+</div>
+                    <div className="stat-label-modern">Monthly Bookings</div>
+                  </div>
+                  <div className="stat-divider"></div>
+                  <div className="stat-item-modern">
+                    <div className="stat-number-modern">4.9/5</div>
+                    <div className="stat-label-modern">Customer Rating</div>
+                  </div>
+                  <div className="stat-divider"></div>
+                  <div className="stat-item-modern">
+                    <div className="stat-number-modern">24/7</div>
+                    <div className="stat-label-modern">Live Support</div>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="hero-image-wrapper">
+              <div className="hero-image-modern">
+                <div className="floating-card floating-card-1">
+                  <div className="card-icon">⚡</div>
+                  <div>
+                    <div className="card-title">Fast Service</div>
+                    <div className="card-desc">45 min average</div>
+                  </div>
+                </div>
+                <div className="floating-card floating-card-2">
+                  <div className="card-icon">🔒</div>
+                  <div>
+                    <div className="card-title">Secure Booking</div>
+                    <div className="card-desc">100% Protected</div>
+                  </div>
+                </div>
+                <div className="hero-image-backdrop"></div>
                 <img 
-                  src={carImg} 
-                  alt="Premium Vehicle Service" 
-                  className="hero-image"
+                  src={garageImg} 
+                  alt="Professional Garage Service" 
+                  className="hero-image-main"
                 />
               </div>
             </div>
           </div>
         </div>
-        <div className="hero-accent-blur"></div>
       </section>
 
       {/* Features Section */}
