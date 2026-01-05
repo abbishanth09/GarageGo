@@ -321,16 +321,16 @@ const LandingPage = ({ isRegisterModalOpen, onRegisterModalChange, isLoginModalO
                   <h6 className="text-dark mb-3">Support</h6>
                   <ul className="list-unstyled small text-muted mb-0">
                     <li><span className="footer-text">help@garagego.com</span></li>
-                    <li><span className="footer-text">+1 (555) 123-4567</span></li>
+                    <li><span className="footer-text">+94 78 123 4567</span></li>
                     <li><span className="footer-text">Knowledge base</span></li>
                   </ul>
                 </div>
                 <div className="col-12 col-md-4">
                   <h6 className="text-dark mb-3">Locations</h6>
                   <ul className="list-unstyled small text-muted mb-0">
-                    <li><span className="footer-text">Downtown</span></li>
-                    <li><span className="footer-text">Westside</span></li>
-                    <li><span className="footer-text">Airport</span></li>
+                    <li><span className="footer-text">Colombo</span></li>
+                    <li><span className="footer-text">Hatton</span></li>
+                    <li><span className="footer-text">Badulla</span></li>
                   </ul>
                 </div>
               </div>
@@ -346,7 +346,7 @@ const LandingPage = ({ isRegisterModalOpen, onRegisterModalChange, isLoginModalO
           </div>
           <hr className="text-secondary opacity-25 my-4" />
           <div className="d-flex flex-column flex-md-row justify-content-between text-muted small">
-            <span>&copy; 2025 GarageGo. All rights reserved.</span>
+            <span>&copy; 2025 GarageGo. All rights reserved to APT Group-12.</span>
             <div className="d-flex gap-3">
               <span className="footer-text">Privacy</span>
               <span className="footer-text">Terms</span>

@@ -113,7 +113,6 @@ const RegisterModal = ({ isOpen, onClose, onLogin, onSwitchToLogin }) => {
                 onChange={handleChange}
               >
                 <option value="customer">Customer</option>
-                <option value="admin">Admin</option>
                 <option value="mechanic">Mechanic</option>
               </select>
             </div>
