@@ -1,17 +1,12 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
-from .auth_views import register, login, profile, get_mechanics
-from .vehicle_views import vehicle_list_create, vehicle_detail
-from .service_views import service_list_create, service_detail
-from .booking_views import (
-    booking_list_create,
-    booking_detail,
-    approve_booking,
-    update_booking_status,
-    update_payment_status,
-    assign_mechanic,
-    mechanic_bookings,
-    available_time_slots,
+from .controllers import (
+    register, login, profile, get_mechanics,
+    vehicle_list_create, vehicle_detail,
+    service_list_create, service_detail,
+    booking_list_create, booking_detail, approve_booking,
+    update_booking_status, update_payment_status, assign_mechanic,
+    mechanic_bookings, available_time_slots,
 )
 
 urlpatterns = [
