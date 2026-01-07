@@ -6,8 +6,9 @@ import garageImg from '../assets/Garage.webp'
 import RegisterModal from '../components/RegisterModal'
 import LoginModal from '../components/LoginModal'
 
-const LandingPage = ({ isRegisterModalOpen, onRegisterModalChange, isLoginModalOpen, onLoginModalChange, onLogin }) => {
+const LandingPage = ({ user, isRegisterModalOpen, onRegisterModalChange, isLoginModalOpen, onLoginModalChange, onLogin }) => {
   const navigate = useNavigate()
+  const greetingName = user ? (user.role === 'admin' ? 'Admin' : (user.username || 'User').split(' ')[0]) : null
   return (
     <div>
       {/* Hero Section */}
@@ -18,6 +19,11 @@ const LandingPage = ({ isRegisterModalOpen, onRegisterModalChange, isLoginModalO
           <div className="row g-5 align-items-center">
             <div className="col-lg-6">
               <div className="hero-content-modern">
+                {greetingName && (
+                  <h1 className="hero-title-modern mb-3" style={{ fontSize: '3.25rem', lineHeight: 1.1 }}>
+                    Hi {greetingName}
+                  </h1>
+                )}
                 <div className="badge-modern mb-4">
                   <span className="badge-dot"></span>
                   <span className="badge-text">TRUSTED BY 10K+ DRIVERS</span>

@@ -11,10 +11,16 @@ const AdminDashboard = ({ user }) => {
     setRefreshKey(prev => prev + 1)
   }
 
+  const greetingName = 'Admin'
+
   return (
-    <div className="container mt-4">
-      <h2>Admin Dashboard</h2>
-      <p className="text-muted">Welcome, {user.username}</p>
+    <div style={{ 
+      minHeight: '100vh', 
+      background: 'radial-gradient(circle at 15% 15%, rgba(251, 191, 36, 0.15), transparent 40%), radial-gradient(circle at 85% 10%, rgba(245, 158, 11, 0.12), transparent 35%), #fef3c7'
+    }}>
+      <div className="container pt-4 pb-5">
+        <h2>Admin Dashboard</h2>
+        <p className="text-muted" style={{fontWeight: 600}}>Hi {greetingName}</p>
 
       <ul className="nav nav-tabs mb-4">
         <li className="nav-item">
@@ -47,6 +53,7 @@ const AdminDashboard = ({ user }) => {
             <ServiceList key={refreshKey} isAdmin={true} onUpdate={handleRefresh} />
           </div>
         )}
+      </div>
       </div>
     </div>
   )

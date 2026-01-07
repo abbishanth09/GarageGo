@@ -3,7 +3,7 @@ import { authAPI } from '../services/apiService'
 
 const LoginModal = ({ isOpen, onClose, onLogin, onSwitchToRegister }) => {
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: '',
   })
   const [error, setError] = useState('')
@@ -60,12 +60,12 @@ const LoginModal = ({ isOpen, onClose, onLogin, onSwitchToRegister }) => {
 
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="form-label fw-medium mb-2">Username</label>
+              <label className="form-label fw-medium mb-2">Email</label>
               <input
-                type="text"
+                type="email"
                 className="form-control form-control-glass"
-                name="username"
-                value={formData.username}
+                name="email"
+                value={formData.email}
                 onChange={handleChange}
                 required
                 autoFocus
