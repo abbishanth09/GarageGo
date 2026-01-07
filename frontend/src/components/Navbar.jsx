@@ -5,13 +5,13 @@ const Navbar = ({ user, onLogout, onOpenRegisterModal, onOpenLoginModal }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark navbar-glass sticky-top py-0">
       <div className="container-lg">
-        <a className="navbar-brand d-flex align-items-center" href="#home">
+        <Link className="navbar-brand d-flex align-items-center" to="/">
           <img 
             src={logoImg}
             alt="GarageGo" 
             style={{ height: '65px', width: 'auto' }}
           />
-        </a>
+        </Link>
 
         <button
           className="navbar-toggler"
@@ -28,17 +28,29 @@ const Navbar = ({ user, onLogout, onOpenRegisterModal, onOpenLoginModal }) => {
             {user ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link nav-link-modern" to="/dashboard">
+                  <Link 
+                    className="nav-link nav-link-modern" 
+                    to="/dashboard"
+                    style={{ 
+                      color: '#1f2937', 
+                      fontWeight: '600',
+                      fontSize: '16px'
+                    }}
+                  >
                     Dashboard
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <span className="badge bg-light-subtle text-light-emphasis rounded-pill px-3 py-2 small fw-semibold">
-                    {user.username} · {user.role}
-                  </span>
-                </li>
-                <li className="nav-item">
-                  <button className="btn btn-outline-light btn-sm rounded-pill px-3 shadow-sm" onClick={onLogout}>
+                  <button 
+                    className="btn btn-sm rounded-pill px-4 shadow-sm fw-semibold" 
+                    onClick={onLogout}
+                    style={{ 
+                      backgroundColor: '#dc2626', 
+                      color: '#ffffff',
+                      border: 'none',
+                      padding: '8px 20px'
+                    }}
+                  >
                     Logout
                   </button>
                 </li>
@@ -56,20 +68,20 @@ const Navbar = ({ user, onLogout, onOpenRegisterModal, onOpenLoginModal }) => {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <button 
-                    className="nav-link nav-link-modern" 
-                    onClick={onOpenLoginModal}
+                  <button
+                    className="nav-link nav-link-modern"
+                    onClick={onOpenRegisterModal}
                     style={{ background: 'none', border: 'none', cursor: 'pointer' }}
                   >
-                    Login
+                    Register
                   </button>
                 </li>
                 <li className="nav-item">
-                  <button 
-                    className="btn btn-gradient btn-sm rounded-pill px-3 shadow-sm" 
-                    onClick={onOpenRegisterModal}
+                  <button
+                    className="btn btn-gradient rounded-pill px-4 py-2 shadow-sm fw-bold"
+                    onClick={onOpenLoginModal}
                   >
-                    Register
+                    Login
                   </button>
                 </li>
               </>

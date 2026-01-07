@@ -55,6 +55,7 @@ function App() {
       <Routes>
         <Route path="/" element={
           <LandingPage 
+            user={user}
             isRegisterModalOpen={isRegisterModalOpen} 
             onRegisterModalChange={setIsRegisterModalOpen}
             isLoginModalOpen={isLoginModalOpen}
