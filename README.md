@@ -1,4 +1,4 @@
-﻿# 🚗 GarageGo - Vehicle Service Booking & Scheduling System
+﻿# GarageGo - Vehicle Service Booking & Scheduling System
 
 A complete full-stack web application for garage service booking and scheduling. Customers can book vehicle services online, admins manage bookings and services, and mechanics track their assigned work.
 
@@ -394,4 +394,5 @@ For questions or support, please open an issue on GitHub or contact:
 ---
 
 Built with ❤️ using React, Django, and MySQL
+
 
