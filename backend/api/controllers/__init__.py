@@ -15,6 +15,7 @@ from .booking_controller import (
     mechanic_bookings,
     available_time_slots,
 )
+from .user_controller import get_users_by_role, toggle_user_active, delete_user
 
 __all__ = [
     'register', 'login', 'profile', 'get_mechanics',
@@ -23,4 +24,5 @@ __all__ = [
     'booking_list_create', 'booking_detail', 'approve_booking',
     'update_booking_status', 'update_payment_status', 'assign_mechanic',
     'mechanic_bookings', 'available_time_slots',
+    'get_users_by_role', 'toggle_user_active', 'delete_user',
 ]

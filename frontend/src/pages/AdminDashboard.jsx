@@ -2,6 +2,8 @@ import { useState } from 'react'
 import BookingList from '../components/BookingList'
 import ServiceList from '../components/ServiceList'
 import ServiceForm from '../components/ServiceForm'
+import CustomerList from '../components/CustomerList'
+import MechanicList from '../components/MechanicList'
 
 const AdminDashboard = ({ user }) => {
   const [activeTab, setActiveTab] = useState('bookings')
@@ -39,6 +41,22 @@ const AdminDashboard = ({ user }) => {
             Manage Services
           </button>
         </li>
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === 'customers' ? 'active' : ''}`}
+            onClick={() => setActiveTab('customers')}
+          >
+            Manage Customers
+          </button>
+        </li>
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === 'mechanics' ? 'active' : ''}`}
+            onClick={() => setActiveTab('mechanics')}
+          >
+            Manage Mechanics
+          </button>
+        </li>
       </ul>
 
       <div className="tab-content">
@@ -52,6 +70,14 @@ const AdminDashboard = ({ user }) => {
             <hr />
             <ServiceList key={refreshKey} isAdmin={true} onUpdate={handleRefresh} />
           </div>
+        )}
+
+        {activeTab === 'customers' && (
+          <CustomerList key={refreshKey} refreshKey={refreshKey} onUpdate={handleRefresh} />
+        )}
+
+        {activeTab === 'mechanics' && (
+          <MechanicList key={refreshKey} refreshKey={refreshKey} onUpdate={handleRefresh} />
         )}
       </div>
       </div>

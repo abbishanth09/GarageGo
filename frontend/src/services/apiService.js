@@ -7,6 +7,12 @@ export const authAPI = {
   getMechanics: () => api.get('/auth/mechanics/'),
 }
 
+export const userAPI = {
+  getUsersByRole: (role) => api.get(`/users/${role}/`),
+  toggleUserActive: (userId) => api.patch(`/users/${userId}/toggle-active/`),
+  deleteUser: (userId) => api.delete(`/users/${userId}/delete/`),
+}
+
 export const vehicleAPI = {
   getAll: () => api.get('/vehicles/'),
   getOne: (id) => api.get(`/vehicles/${id}/`),

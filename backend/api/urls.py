@@ -7,6 +7,7 @@ from .controllers import (
     booking_list_create, booking_detail, approve_booking,
     update_booking_status, update_payment_status, assign_mechanic,
     mechanic_bookings, available_time_slots,
+    get_users_by_role, toggle_user_active, delete_user,
 )
 
 urlpatterns = [
@@ -16,6 +17,11 @@ urlpatterns = [
     path('auth/profile/', profile, name='profile'),
     path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/mechanics/', get_mechanics, name='get_mechanics'),
+    
+    # User Management (Admin)
+    path('users/<str:role>/', get_users_by_role, name='get_users_by_role'),
+    path('users/<uuid:user_id>/toggle-active/', toggle_user_active, name='toggle_user_active'),
+    path('users/<uuid:user_id>/delete/', delete_user, name='delete_user'),
     
     # Vehicles
     path('vehicles/', vehicle_list_create, name='vehicle_list_create'),
