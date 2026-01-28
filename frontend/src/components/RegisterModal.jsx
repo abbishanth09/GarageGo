@@ -12,17 +12,78 @@ const RegisterModal = ({ isOpen, onClose, onLogin, onSwitchToLogin }) => {
   })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [validationErrors, setValidationErrors] = useState({})
+
+  // Validate email format
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
+
+  // Validate Sri Lankan phone number
+  const validateSriLankanPhone = (phone) => {
+    // Remove spaces and dashes
+    const cleanPhone = phone.replace(/[\s-]/g, '')
+    
+    // Sri Lankan mobile: 07X XXX XXXX (10 digits starting with 07)
+    // Sri Lankan landline: 0XX XXX XXXX (9-10 digits starting with 0)
+    const mobileRegex = /^07[0-9]{8}$/
+    const landlineRegex = /^0[1-9][0-9]{7,8}$/
+    
+    return mobileRegex.test(cleanPhone) || landlineRegex.test(cleanPhone)
+  }
 
   const handleChange = (e) => {
+    const { name, value } = e.target
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     })
+
+    // Clear validation error for this field
+    if (validationErrors[name]) {
+      setValidationErrors({
+        ...validationErrors,
+        [name]: '',
+      })
+    }
+
+    // Real-time validation
+    if (name === 'email' && value) {
+      if (!validateEmail(value)) {
+        setValidationErrors({
+          ...validationErrors,
+          email: 'Please enter a valid email address',
+        })
+      }
+    }
+
+    if (name === 'phone' && value) {
+      if (!validateSriLankanPhone(value)) {
+        setValidationErrors({
+          ...validationErrors,
+          phone: 'Please enter a valid Sri Lankan phone number (e.g., 0771234567 or 0112345678)',
+        })
+      }
+    }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
+    setValidationErrors({})
+
+    // Validate email
+    if (!validateEmail(formData.email)) {
+      setValidationErrors({ email: 'Please enter a valid email address' })
+      return
+    }
+
+    // Validate phone if provided
+    if (formData.phone && !validateSriLankanPhone(formData.phone)) {
+      setValidationErrors({ phone: 'Please enter a valid Sri Lankan phone number (e.g., 0771234567 or 0112345678)' })
+      return
+    }
 
     if (formData.password !== formData.password2) {
       setError('Passwords do not match')
@@ -73,12 +134,17 @@ const RegisterModal = ({ isOpen, onClose, onLogin, onSwitchToLogin }) => {
               <label className="form-label fw-medium mb-2">Email</label>
               <input
                 type="email"
-                className="form-control form-control-glass"
+                className={`form-control form-control-glass ${validationErrors.email ? 'is-invalid' : ''}`}
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
               />
+              {validationErrors.email && (
+                <div className="invalid-feedback d-block">
+                  {validationErrors.email}
+                </div>
+              )}
             </div>
 
             <div className="mb-3">
@@ -97,11 +163,17 @@ const RegisterModal = ({ isOpen, onClose, onLogin, onSwitchToLogin }) => {
               <label className="form-label fw-medium mb-2">Phone</label>
               <input
                 type="tel"
-                className="form-control form-control-glass"
+                className={`form-control form-control-glass ${validationErrors.phone ? 'is-invalid' : ''}`}
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                placeholder="0771234567 or 0112345678"
               />
+              {validationErrors.phone && (
+                <div className="invalid-feedback d-block">
+                  {validationErrors.phone}
+                </div>
+              )}
             </div>
 
             <div className="mb-3">

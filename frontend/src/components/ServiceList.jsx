@@ -135,7 +135,7 @@ const ServiceList = ({ isAdmin = false, onUpdate }) => {
                     {!service.is_active && <span className="badge bg-secondary ms-2">Inactive</span>}
                   </h5>
                   <p className="card-text">{service.description}</p>
-                  <p className="mb-1"><strong>Price:</strong> ${service.price}</p>
+                  <p className="mb-1"><strong>Price:</strong> Rs {service.price}</p>
                   <p className="mb-1"><strong>Duration:</strong> {service.duration_minutes} minutes</p>
                   
                   {isAdmin && (

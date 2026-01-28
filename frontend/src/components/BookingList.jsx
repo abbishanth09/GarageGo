@@ -178,7 +178,7 @@ const BookingList = ({ userRole, onUpdate }) => {
                   </td>
                   <td>
                     {booking.service_name}<br />
-                    <small className="text-muted">${booking.service_price}</small>
+                    <small className="text-muted">Rs {booking.service_price}</small>
                   </td>
                   <td>
                     {booking.vehicle_number}<br />

@@ -144,7 +144,7 @@ const BookingForm = ({ onSuccess }) => {
               <option value="">-- Select Service --</option>
               {services.map(service => (
                 <option key={service.id} value={service.id}>
-                  {service.name} - ${service.price} ({service.duration_minutes} min)
+                  {service.name} - Rs {service.price} ({service.duration_minutes} min)
                 </option>
               ))}
             </select>

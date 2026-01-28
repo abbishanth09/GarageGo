@@ -2,6 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth import authenticate
 from .models import User, Vehicle, Service, Booking
 from datetime import datetime, date
+import re
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -21,7 +22,30 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     def validate_email(self, value):
         if User.objects.filter(email=value).exists():
             raise serializers.ValidationError("Email already exists")
+        # Additional email format validation
+        email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        if not re.match(email_regex, value):
+            raise serializers.ValidationError("Invalid email format")
         return value
+    
+    def validate_phone(self, value):
+        if not value:
+            return value  # Phone is optional
+        
+        # Remove spaces and dashes
+        clean_phone = re.sub(r'[\s-]', '', value)
+        
+        # Sri Lankan mobile: 07X XXX XXXX (10 digits starting with 07)
+        mobile_regex = r'^07[0-9]{8}$'
+        # Sri Lankan landline: 0XX XXX XXXX (9-10 digits starting with 0)
+        landline_regex = r'^0[1-9][0-9]{7,8}$'
+        
+        if not (re.match(mobile_regex, clean_phone) or re.match(landline_regex, clean_phone)):
+            raise serializers.ValidationError(
+                "Invalid Sri Lankan phone number. Format: 0771234567 (mobile) or 0112345678 (landline)"
+            )
+        
+        return clean_phone
     
     def create(self, validated_data):
         validated_data.pop('password2')
