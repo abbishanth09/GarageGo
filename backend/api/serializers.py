@@ -14,6 +14,32 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         fields = ['id', 'email', 'username', 'phone', 'role', 'password', 'password2']
         read_only_fields = ['id']
     
+    def validate_password(self, value):
+        """
+        Validate password strength
+        """
+        if len(value) < 8:
+            raise serializers.ValidationError("Password must be at least 8 characters long")
+        
+        if not re.search(r'[A-Z]', value):
+            raise serializers.ValidationError("Password must contain at least one uppercase letter")
+        
+        if not re.search(r'[a-z]', value):
+            raise serializers.ValidationError("Password must contain at least one lowercase letter")
+        
+        if not re.search(r'\d', value):
+            raise serializers.ValidationError("Password must contain at least one number")
+        
+        if not re.search(r'[!@#$%^&*(),.?":{}|<>]', value):
+            raise serializers.ValidationError("Password must contain at least one special character (!@#$%^&*(),.?\":{}|<>)")
+        
+        # Check for common passwords
+        common_passwords = ['password', '12345678', 'password123', 'admin123', 'qwerty123']
+        if value.lower() in common_passwords:
+            raise serializers.ValidationError("This password is too common")
+        
+        return value
+    
     def validate(self, data):
         if data['password'] != data['password2']:
             raise serializers.ValidationError({"password": "Passwords do not match"})
