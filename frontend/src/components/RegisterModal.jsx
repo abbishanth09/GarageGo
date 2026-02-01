@@ -13,6 +13,8 @@ const RegisterModal = ({ isOpen, onClose, onLogin, onSwitchToLogin }) => {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [validationErrors, setValidationErrors] = useState({})
+  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword2, setShowPassword2] = useState(false)
 
   // Validate email format
   const validateEmail = (email) => {
@@ -191,28 +193,76 @@ const RegisterModal = ({ isOpen, onClose, onLogin, onSwitchToLogin }) => {
 
             <div className="mb-3">
               <label className="form-label fw-medium mb-2">Password</label>
-              <input
-                type="password"
-                className="form-control form-control-glass"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                minLength="6"
-              />
+              <div className="position-relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="form-control form-control-glass"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  minLength="6"
+                  style={{ paddingRight: '40px' }}
+                />
+                <button
+                  type="button"
+                  className="btn btn-link position-absolute"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    right: '5px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    padding: '0',
+                    width: '30px',
+                    height: '30px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textDecoration: 'none',
+                    color: '#6c757d'
+                  }}
+                  title={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? '👁️' : '👁️‍🗨️'}
+                </button>
+              </div>
             </div>
 
             <div className="mb-4">
               <label className="form-label fw-medium mb-2">Confirm Password</label>
-              <input
-                type="password"
-                className="form-control form-control-glass"
-                name="password2"
-                value={formData.password2}
-                onChange={handleChange}
-                required
-                minLength="6"
-              />
+              <div className="position-relative">
+                <input
+                  type={showPassword2 ? "text" : "password"}
+                  className="form-control form-control-glass"
+                  name="password2"
+                  value={formData.password2}
+                  onChange={handleChange}
+                  required
+                  minLength="6"
+                  style={{ paddingRight: '40px' }}
+                />
+                <button
+                  type="button"
+                  className="btn btn-link position-absolute"
+                  onClick={() => setShowPassword2(!showPassword2)}
+                  style={{
+                    right: '5px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    padding: '0',
+                    width: '30px',
+                    height: '30px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textDecoration: 'none',
+                    color: '#6c757d'
+                  }}
+                  title={showPassword2 ? "Hide password" : "Show password"}
+                >
+                  {showPassword2 ? '👁️' : '👁️‍🗨️'}
+                </button>
+              </div>
             </div>
 
             <button
