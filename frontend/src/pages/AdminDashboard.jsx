@@ -4,9 +4,10 @@ import ServiceList from '../components/ServiceList'
 import ServiceForm from '../components/ServiceForm'
 import CustomerList from '../components/CustomerList'
 import MechanicList from '../components/MechanicList'
+import DashboardStatistics from '../components/DashboardStatistics'
 
 const AdminDashboard = ({ user }) => {
-  const [activeTab, setActiveTab] = useState('bookings')
+  const [activeTab, setActiveTab] = useState('dashboard')
   const [refreshKey, setRefreshKey] = useState(0)
 
   const handleRefresh = () => {
@@ -25,6 +26,14 @@ const AdminDashboard = ({ user }) => {
         <p className="text-muted" style={{fontWeight: 600}}>Hi {greetingName}</p>
 
       <ul className="nav nav-tabs mb-4">
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === 'dashboard' ? 'active' : ''}`}
+            onClick={() => setActiveTab('dashboard')}
+          >
+            Dashboard
+          </button>
+        </li>
         <li className="nav-item">
           <button
             className={`nav-link ${activeTab === 'bookings' ? 'active' : ''}`}
@@ -60,6 +69,10 @@ const AdminDashboard = ({ user }) => {
       </ul>
 
       <div className="tab-content">
+        {activeTab === 'dashboard' && (
+          <DashboardStatistics key={refreshKey} onUpdate={handleRefresh} />
+        )}
+
         {activeTab === 'bookings' && (
           <BookingList key={refreshKey} userRole="admin" onUpdate={handleRefresh} />
         )}

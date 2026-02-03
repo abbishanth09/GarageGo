@@ -8,6 +8,8 @@ from .controllers import (
     update_booking_status, update_payment_status, assign_mechanic,
     mechanic_bookings, available_time_slots,
     get_users_by_role, toggle_user_active, delete_user,
+    dashboard_statistics, booking_status_chart_data, mechanic_workload,
+    recent_bookings, popular_services, top_customers,
 )
 
 urlpatterns = [
@@ -40,4 +42,12 @@ urlpatterns = [
     path('bookings/<uuid:booking_id>/assign-mechanic/', assign_mechanic, name='assign_mechanic'),
     path('bookings/mechanic/my-bookings/', mechanic_bookings, name='mechanic_bookings'),
     path('bookings/available-slots/', available_time_slots, name='available_time_slots'),
+    
+    # Dashboard (Admin)
+    path('dashboard/statistics/', dashboard_statistics, name='dashboard_statistics'),
+    path('dashboard/booking-chart/', booking_status_chart_data, name='booking_status_chart_data'),
+    path('dashboard/mechanic-workload/', mechanic_workload, name='mechanic_workload'),
+    path('dashboard/recent-bookings/', recent_bookings, name='recent_bookings'),
+    path('dashboard/popular-services/', popular_services, name='popular_services'),
+    path('dashboard/top-customers/', top_customers, name='top_customers'),
 ]
