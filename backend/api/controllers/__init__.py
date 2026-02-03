@@ -16,6 +16,14 @@ from .booking_controller import (
     available_time_slots,
 )
 from .user_controller import get_users_by_role, toggle_user_active, delete_user
+from .dashboard_controller import (
+    dashboard_statistics,
+    booking_status_chart_data,
+    mechanic_workload,
+    recent_bookings,
+    popular_services,
+    top_customers,
+)
 
 __all__ = [
     'register', 'login', 'profile', 'get_mechanics',
@@ -25,4 +33,6 @@ __all__ = [
     'update_booking_status', 'update_payment_status', 'assign_mechanic',
     'mechanic_bookings', 'available_time_slots',
     'get_users_by_role', 'toggle_user_active', 'delete_user',
+    'dashboard_statistics', 'booking_status_chart_data', 'mechanic_workload',
+    'recent_bookings', 'popular_services', 'top_customers',
 ]

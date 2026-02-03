@@ -42,3 +42,12 @@ export const bookingAPI = {
   getMechanicBookings: () => api.get('/bookings/mechanic/my-bookings/'),
   getAvailableSlots: (date) => api.get('/bookings/available-slots/', { params: { date } }),
 }
+
+export const dashboardAPI = {
+  getStatistics: () => api.get('/dashboard/statistics/'),
+  getBookingChart: () => api.get('/dashboard/booking-chart/'),
+  getMechanicWorkload: () => api.get('/dashboard/mechanic-workload/'),
+  getRecentBookings: () => api.get('/dashboard/recent-bookings/'),
+  getPopularServices: () => api.get('/dashboard/popular-services/'),
+  getTopCustomers: () => api.get('/dashboard/top-customers/'),
+}
