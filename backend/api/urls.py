@@ -10,6 +10,7 @@ from .controllers import (
     get_users_by_role, toggle_user_active, delete_user,
     dashboard_statistics, booking_status_chart_data, mechanic_workload,
     recent_bookings, popular_services, top_customers,
+    offer_list_create, offer_detail, offer_list_all,
 )
 
 urlpatterns = [
@@ -50,4 +51,9 @@ urlpatterns = [
     path('dashboard/recent-bookings/', recent_bookings, name='recent_bookings'),
     path('dashboard/popular-services/', popular_services, name='popular_services'),
     path('dashboard/top-customers/', top_customers, name='top_customers'),
+    
+    # Offers
+    path('offers/', offer_list_create, name='offer_list_create'),
+    path('offers/active/', offer_list_all, name='offer_list_all'),
+    path('offers/<int:pk>/', offer_detail, name='offer_detail'),
 ]

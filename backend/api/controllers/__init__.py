@@ -25,6 +25,13 @@ from .dashboard_controller import (
     top_customers,
 )
 
+# Import offer controller with error handling to prevent auth breakage
+try:
+    from .offer_controller import offer_list_create, offer_detail, offer_list_all
+except ImportError as e:
+    print("WARNING: Offer controller import failed:", e)
+    offer_list_create = offer_detail = offer_list_all = None
+
 __all__ = [
     'register', 'login', 'profile', 'get_mechanics',
     'vehicle_list_create', 'vehicle_detail',
@@ -35,4 +42,5 @@ __all__ = [
     'get_users_by_role', 'toggle_user_active', 'delete_user',
     'dashboard_statistics', 'booking_status_chart_data', 'mechanic_workload',
     'recent_bookings', 'popular_services', 'top_customers',
+    'offer_list_create', 'offer_detail', 'offer_list_all',
 ]

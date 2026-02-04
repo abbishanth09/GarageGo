@@ -5,13 +5,39 @@ import ServiceForm from '../components/ServiceForm'
 import CustomerList from '../components/CustomerList'
 import MechanicList from '../components/MechanicList'
 import DashboardStatistics from '../components/DashboardStatistics'
+import OfferForm from '../components/OfferForm'
+import OfferList from '../components/OfferList'
+import { offerAPI } from '../services/apiService'
 
 const AdminDashboard = ({ user }) => {
   const [activeTab, setActiveTab] = useState('dashboard')
   const [refreshKey, setRefreshKey] = useState(0)
+  const [editingOffer, setEditingOffer] = useState(null)
 
   const handleRefresh = () => {
     setRefreshKey(prev => prev + 1)
+  }
+
+  const handleSaveOffer = async (offerData) => {
+    try {
+      if (editingOffer) {
+        await offerAPI.update(editingOffer.id, offerData)
+      } else {
+        await offerAPI.create(offerData)
+      }
+      setEditingOffer(null)
+      handleRefresh()
+    } catch (error) {
+      alert(error.message || 'Failed to save offer')
+    }
+  }
+
+  const handleEditOffer = (offer) => {
+    setEditingOffer(offer)
+  }
+
+  const handleCancelEdit = () => {
+    setEditingOffer(null)
   }
 
   const greetingName = 'Admin'
@@ -66,6 +92,14 @@ const AdminDashboard = ({ user }) => {
             Manage Mechanics
           </button>
         </li>
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === 'offers' ? 'active' : ''}`}
+            onClick={() => setActiveTab('offers')}
+          >
+            Manage Offers
+          </button>
+        </li>
       </ul>
 
       <div className="tab-content">
@@ -82,6 +116,22 @@ const AdminDashboard = ({ user }) => {
             <ServiceForm onSuccess={handleRefresh} />
             <hr />
             <ServiceList key={refreshKey} isAdmin={true} onUpdate={handleRefresh} />
+          </div>
+        )}
+
+        {activeTab === 'offers' && (
+          <div>
+            <OfferForm 
+              offer={editingOffer} 
+              onSave={handleSaveOffer}
+              onCancel={handleCancelEdit}
+            />
+            <hr className="my-4" />
+            <OfferList 
+              key={refreshKey} 
+              refreshKey={refreshKey}
+              onEdit={handleEditOffer}
+            />
           </div>
         )}
 
