@@ -51,3 +51,12 @@ export const dashboardAPI = {
   getPopularServices: () => api.get('/dashboard/popular-services/'),
   getTopCustomers: () => api.get('/dashboard/top-customers/'),
 }
+
+export const offerAPI = {
+  getAll: () => api.get('/offers/active/'),
+  getAllAdmin: () => api.get('/offers/'),
+  getOne: (id) => api.get(`/offers/${id}/`),
+  create: (data) => api.post('/offers/', data),
+  update: (id, data) => api.put(`/offers/${id}/`, data),
+  delete: (id) => api.delete(`/offers/${id}/`),
+}

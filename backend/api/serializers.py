@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-from .models import User, Vehicle, Service, Booking
+from .models import User, Vehicle, Service, Booking, Offer
 from datetime import datetime, date
 import re
 
@@ -263,4 +263,21 @@ class BookingUpdateSerializer(serializers.ModelSerializer):
             if 'status' in data or 'payment_status' in data or 'mechanic' in data:
                 raise serializers.ValidationError("Only admin can update these fields")
         
+        return data
+
+
+class OfferSerializer(serializers.ModelSerializer):
+    created_by_email = serializers.EmailField(source='created_by.email', read_only=True)
+    
+    class Meta:
+        model = Offer
+        fields = ['id', 'title', 'message', 'discount_percentage', 'valid_from', 
+                  'valid_until', 'priority', 'is_active', 'created_by', 'created_by_email',
+                  'created_at', 'updated_at']
+        read_only_fields = ['id', 'created_by', 'created_at', 'updated_at']
+    
+    def validate(self, data):
+        if 'valid_from' in data and 'valid_until' in data:
+            if data['valid_until'] <= data['valid_from']:
+                raise serializers.ValidationError("Valid until must be after valid from")
         return data
